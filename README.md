@@ -28,8 +28,8 @@ in second terminal:
 ### `node index.js`
 
 
-pre-requsits
-*. node installed
+**pre-requsits
+> node installed
 
 
 
