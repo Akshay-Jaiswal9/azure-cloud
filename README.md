@@ -6,22 +6,22 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 create a folder in your desired location
 
-> git clone https://github.com/Akshay-Jaiswal9/azure-cloud.git
-> cd azure-cloud
-> npm install
+### `git clone https://github.com/Akshay-Jaiswal9/azure-cloud.git`
+### `cd azure-cloud`
+### `npm install`
 
 now in a second terminal, come to the azure-cloud folder
 
-> cd server
-> npm install
+### `cd server`
+### `npm install`
 
 now after the install completes
 
 in first terminal:
-> npm start
+### `npm start`
 
 in second terminal:
-> node index.js
+### `node index.js`
 
 pre-requsits
 *. node installed
