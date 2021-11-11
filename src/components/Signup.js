@@ -15,14 +15,6 @@ export default function Signup() {
     const [passwordConfirm, setPasswordConfirm] = useState("");
     const [signupError, setSignupError] = useState("");
 
-    
-    
-    // const emailRef = useRef()
-    // const usernameRef = useRef()
-    // const phonenumberRef = useRef()
-    // const passwordRef = useRef()
-    // const passwordConfirmRef = useRef()
-
     const handleSubmit = (event) => {
         event.preventDefault();
         // console.log("yo!", email, username, phonenumber);

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import {Form, Button} from "react-bootstrap"
 import Path from 'path';
 
@@ -18,10 +18,6 @@ const FileUpload = (props) => {
     const {USERNAME} = useContext(LoginContext);
 
     const storageConfigured = isStorageConfigured(USERNAME);
-
-    const [ username, setUsername ] = useState("");
-    const [ selectedFile, setSelectedFile ] = useState(null);
-    const [ loaded, setLoaded ] = useState(null);
 
     console.log(USERNAME);
   

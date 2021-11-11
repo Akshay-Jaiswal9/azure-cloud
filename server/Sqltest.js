@@ -3,14 +3,11 @@ const express = require("express");
 const prompt = require("prompt-sync")();
 const bcrypt = require("bcryptjs");
 
-const download = require('download'); // isko download kr
+const download = require('download'); 
 
 const { BlobServiceClient } = require("@azure/storage-blob");
 var azure = require('azure-storage');
 
-const account = "azurestoragedrive";
-const sas = "sv=2020-08-04&ss=b&srt=sco&sp=rwdlactfx&se=2023-11-15T08:35:27Z&st=2021-11-11T00:35:27Z&sip=0.0.0.0-255.255.255.255&spr=https&sig=ww7FtjOJm3SllsZua0rh1vhbl3pnIyr6DoxYoM3f%2FQg%3D"
-const blobServiceClient = new BlobServiceClient(`https://${account}.blob.core.windows.net?${sas}`);
 const blobServiceClient2 = BlobServiceClient.fromConnectionString("BlobEndpoint=https://azurestoragedrive.blob.core.windows.net/;QueueEndpoint=https://azurestoragedrive.queue.core.windows.net/;FileEndpoint=https://azurestoragedrive.file.core.windows.net/;TableEndpoint=https://azurestoragedrive.table.core.windows.net/;SharedAccessSignature=sv=2020-08-04&ss=b&srt=sco&sp=rwdlactfx&se=2023-11-15T08:35:27Z&st=2021-11-11T00:35:27Z&sip=0.0.0.0-255.255.255.255&spr=https&sig=ww7FtjOJm3SllsZua0rh1vhbl3pnIyr6DoxYoM3f%2FQg%3D");
 
 var blobService = azure.createBlobService("BlobEndpoint=https://azurestoragedrive.blob.core.windows.net/;QueueEndpoint=https://azurestoragedrive.queue.core.windows.net/;FileEndpoint=https://azurestoragedrive.file.core.windows.net/;TableEndpoint=https://azurestoragedrive.table.core.windows.net/;SharedAccessSignature=sv=2020-08-04&ss=b&srt=sco&sp=rwdlactfx&se=2023-11-15T08:35:27Z&st=2021-11-11T00:35:27Z&sip=0.0.0.0-255.255.255.255&spr=https&sig=ww7FtjOJm3SllsZua0rh1vhbl3pnIyr6DoxYoM3f%2FQg%3D");
@@ -83,7 +80,7 @@ function registerDatabase() {
     `,
       (err, rowCount) => {
         if (err) {
-          console.error(rowCount-1, err.message);
+          // console.error(rowCount-1, err.message);
           signupError="username/email already exist!"
           s = false
         } else {
@@ -94,11 +91,11 @@ function registerDatabase() {
       }
     );
 
-    request.on("row", (columns) => {
-      columns.forEach((column) => {
-        console.log("%s\t%s", column.metadata.colName, column.value);
-      });
-    });
+    // request.on("row", (columns) => {
+    //   columns.forEach((column) => {
+    //     console.log("%s\t%s", column.metadata.colName, column.value);
+    //   });
+    // });
 
     connection.execSql(request);
   });
@@ -111,7 +108,7 @@ const signupSuccess = () => {       // signup export
       // var conName = prompt("Enter Container Name : "); // idhar uname aaiga
       console.log("Creating container...");
       //const conClient=blobServiceClient2.getContainerClient(username);
-      console.log(`Creating Container "${username}"...`);
+      // console.log(`Creating Container "${username}"...`);
       //conClient.create();
       
       
@@ -154,8 +151,6 @@ const login = (uname, pcode) => {
 
 
   function loginDatabase() {
-    // var uname = prompt("Username: ");
-    // var pcode = prompt("Password: ");
     console.log("Reading rows from the Table...");
 
     // Read all rows from table
@@ -178,12 +173,11 @@ const login = (uname, pcode) => {
 
     request.on("row", (columns) => {
       columns.forEach((column) => {
-        console.log("%s\t%s", column.metadata.colName, column.value);
+        // console.log("%s\t%s", column.metadata.colName, column.value);
         bcrypt.compare(pcode, String(column.value.trim()), function (error, result) {
           if (result) {
             console.log("Success! ", result);
             r=result;
-            // console.log("Success");
           } else {
             console.log("Incorrent UserName / Password");
             loginError = "Incorrent UserName / Password";
@@ -193,9 +187,7 @@ const login = (uname, pcode) => {
       });
     });
     connection.execSql(request);
-    // setTimeout(() => {console.log(r);}, 2000)
   }
-//   return r;
 }
 const bachalo = () => {             // login export: isne bacha liya
   return {result: r, error:loginError};
@@ -222,17 +214,12 @@ const uploadMetaData = (uname,BlobName) => {
   async function uploadMetaData() {
     m = false;
 
-    //var uname = prompt("Username: ");     // username - container name
-    //var blobName = prompt("FileName: ");  // blob name - file name
-
     const containerClient = blobServiceClient2.getContainerClient(uname);
     const blockBlobClient = containerClient.getBlockBlobClient(blobName)
     var blockblob= containerClient.getBlobClient(blobName);
-    console.log(blockBlobClient.url);
+    // console.log(blockBlobClient.url);
 
     var blobURL=blockBlobClient.url;
-
-    
 
     var lastModified = (await blockblob.getProperties()).lastModified;  //for the blob
     var versionId = (await blockblob.getProperties()).versionId;     // for the blob
@@ -246,16 +233,16 @@ const uploadMetaData = (uname,BlobName) => {
           console.error(err.message);
         } else {
           m = true;
-          console.log(`${rowCount} row(s) returned`);
+          // console.log(`${rowCount} row(s) returned`);
         }
       }
     );
 
-    request.on("row", (columns) => {
-      columns.forEach((column) => {
-        console.log("%s\t%s", column.metadata.colName, column.value);
-      });
-    });
+    // request.on("row", (columns) => {
+    //   columns.forEach((column) => {
+    //     console.log("%s\t%s", column.metadata.colName, column.value);
+    //   });
+    // });
 
     connection.execSql(request);
   }
@@ -286,8 +273,6 @@ const deleteContainerFiles = (uname,blobName) => {        // for deleteing the f
   
   async function deleteFile() {
       try {
-        //var uname = prompt("Username: ");     // username - container name
-        //var blobName = prompt("FileName: ");  // blob name - file name
 
         const containerClient = blobServiceClient2.getContainerClient(uname);
         var blockblob= containerClient.getBlobClient(blobName);
@@ -306,16 +291,16 @@ const deleteContainerFiles = (uname,blobName) => {        // for deleteing the f
               console.error(err.message);
             } else {
               d = true;
-              console.log(`${rowCount} row(s) returned`);
+              // console.log(`${rowCount} row(s) returned`);
               console.log("File Deleted Successfully From SQL Database!!!!! ");
             }
           }
         );
-        request.on("row", (columns) => {
-          columns.forEach((column) => {
-            console.log("%s\t%s", column.metadata.colName, column.value);
-          });
-        });
+        // request.on("row", (columns) => {
+        //   columns.forEach((column) => {
+        //     console.log("%s\t%s", column.metadata.colName, column.value);
+        //   });
+        // });
     
         connection.execSql(request);
 
@@ -340,7 +325,7 @@ const downloadFile = (uname,blobName) => {
   console.log(blockBlobClient.url);
   
   var blobURL=blockBlobClient.url;
-  console.log("Downloading in C-drive: Azure-Blob-Downloads");
+  console.log("Downloading in C:/Azure-Blob-Downloads");
   try{
     download(blobURL,"C://Azure-Blob-Downloads");
     df = true;
