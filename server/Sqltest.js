@@ -9,11 +9,11 @@ const { BlobServiceClient } = require("@azure/storage-blob");
 var azure = require('azure-storage');
 
 const account = "azurestoragedrive";
-const sas = "sv=2020-08-04&ss=b&srt=sco&sp=rwdlactfx&se=2022-11-10T06:29:43Z&st=2021-11-09T22:29:43Z&sip=150.129.168.8&spr=https&sig=TfQL%2B%2Ft6XuNr1DeJ4sbbFS9WtGnjkHtOzvudQNNrBzo%3D"
+const sas = "sv=2020-08-04&ss=b&srt=sco&sp=rwdlactfx&se=2023-11-15T08:35:27Z&st=2021-11-11T00:35:27Z&sip=0.0.0.0-255.255.255.255&spr=https&sig=ww7FtjOJm3SllsZua0rh1vhbl3pnIyr6DoxYoM3f%2FQg%3D"
 const blobServiceClient = new BlobServiceClient(`https://${account}.blob.core.windows.net?${sas}`);
-const blobServiceClient2 = BlobServiceClient.fromConnectionString("DefaultEndpointsProtocol=https;AccountName=azurestoragedrive;AccountKey=9gJFBBUVn6Cp04R4ZwAqKgxSB63bcisO+5G7VK+GSxVFn1o8HMYEkgWhWcEfPosAqaJW7NyIt5Z3nhBT4lXwzw==;EndpointSuffix=core.windows.net");
+const blobServiceClient2 = BlobServiceClient.fromConnectionString("BlobEndpoint=https://azurestoragedrive.blob.core.windows.net/;QueueEndpoint=https://azurestoragedrive.queue.core.windows.net/;FileEndpoint=https://azurestoragedrive.file.core.windows.net/;TableEndpoint=https://azurestoragedrive.table.core.windows.net/;SharedAccessSignature=sv=2020-08-04&ss=b&srt=sco&sp=rwdlactfx&se=2023-11-15T08:35:27Z&st=2021-11-11T00:35:27Z&sip=0.0.0.0-255.255.255.255&spr=https&sig=ww7FtjOJm3SllsZua0rh1vhbl3pnIyr6DoxYoM3f%2FQg%3D");
 
-var blobService = azure.createBlobService("DefaultEndpointsProtocol=https;AccountName=azurestoragedrive;AccountKey=9gJFBBUVn6Cp04R4ZwAqKgxSB63bcisO+5G7VK+GSxVFn1o8HMYEkgWhWcEfPosAqaJW7NyIt5Z3nhBT4lXwzw==;EndpointSuffix=core.windows.net");
+var blobService = azure.createBlobService("BlobEndpoint=https://azurestoragedrive.blob.core.windows.net/;QueueEndpoint=https://azurestoragedrive.queue.core.windows.net/;FileEndpoint=https://azurestoragedrive.file.core.windows.net/;TableEndpoint=https://azurestoragedrive.table.core.windows.net/;SharedAccessSignature=sv=2020-08-04&ss=b&srt=sco&sp=rwdlactfx&se=2023-11-15T08:35:27Z&st=2021-11-11T00:35:27Z&sip=0.0.0.0-255.255.255.255&spr=https&sig=ww7FtjOJm3SllsZua0rh1vhbl3pnIyr6DoxYoM3f%2FQg%3D");
 
 
 

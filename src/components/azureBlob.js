@@ -1,7 +1,7 @@
 // THIS IS SAMPLE CODE ONLY - NOT MEANT FOR PRODUCTION USE
 import { BlobServiceClient} from '@azure/storage-blob';
 
-const sasToken = process.env.storagesastoken || "sv=2020-08-04&ss=b&srt=sco&sp=rwdlactfx&se=2022-11-09T19:25:48Z&st=2021-11-10T11:25:48Z&sip=150.129.168.1&spr=https&sig=XlkU23ZIXkbhdLfUZhAD1XJ2TSrVeo5%2FJOgPjQmbQGw%3D"; // Fill string with your SAS token
+const sasToken = process.env.storagesastoken || "sv=2020-08-04&ss=b&srt=sco&sp=rwdlactfx&se=2023-11-15T08:35:27Z&st=2021-11-11T00:35:27Z&sip=0.0.0.0-255.255.255.255&spr=https&sig=ww7FtjOJm3SllsZua0rh1vhbl3pnIyr6DoxYoM3f%2FQg%3D"; // Fill string with your SAS token
 let containerName = ``;
 const storageAccountName = process.env.storageresourcename || "azurestoragedrive"; // Fill string with your Storage resource name
 
