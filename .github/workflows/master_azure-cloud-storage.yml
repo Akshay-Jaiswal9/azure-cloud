@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'azure-cloud-storage'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9C586FB33A384E309155486DDCE3FCE6 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A3F3491D773D4A56A37ADA4E56A95E34 }}
           package: .
