@@ -4,32 +4,36 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## To run in Dev Environment:
 
+
 create a folder in your desired location
 
 ### `git clone https://github.com/Akshay-Jaiswal9/azure-cloud.git`
 ### `cd azure-cloud`
 ### `npm install`
 
+
 now in a second terminal, come to the azure-cloud folder
 
 ### `cd server`
 ### `npm install`
+
 
 now after the install completes
 
 in first terminal:
 ### `npm start`
 
+
 in second terminal:
 ### `node index.js`
+
 
 pre-requsits
 *. node installed
 
 
 
-
-## Available Scripts
+## Available Scripts in React side
 
 In the project directory, you can run:
 
